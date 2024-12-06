@@ -8,14 +8,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # Checkout the repository
       - uses: actions/checkout@v3
-      - uses: bun/action-setup@v2
-        with:
-          version: 7
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16.x
-          cahce: "bun"
 
+      # Use the correct Bun setup action
+      - uses: oven-sh/bun-install@v1
+        with:
+          bun-version: 0.7.0 # Replace with the desired version
+
+      # Install dependencies
       - run: bun install --frozen-lockfile
+
+      # Run CI commands
       - run: bun run ci
