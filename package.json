@@ -4,11 +4,16 @@
   "type": "module",
   "version": "1.0.0",
   "scripts": {
-    "build": "tsup src/index.ts --format cjs,esm --dts"
+    "dev": "vitest",
+    "test": "vitest run",
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "lint": "tsc",
+    "ci": "bun run lint && bun run test && bun run build"
   },
   "devDependencies": {
     "@types/bun": "latest",
-    "tsup": "^8.3.5"
+    "tsup": "^8.3.5",
+    "vitest": "^2.1.8"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
